@@ -1,0 +1,76 @@
+@model StudentRegistrationSystem.Models.Course
+
+@{
+    ViewData["Title"] = "Eliminar Curso";
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-danger">@ViewData["Title"]</h1>
+            <p class="lead">¿Estás seguro de que deseas eliminar este curso?</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="card-title mb-0">@Model.Name</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Esta acción no se puede deshacer. Se eliminarán permanentemente todos los datos del curso.
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="text-muted"><i class="bi bi-info-circle me-2"></i>Descripción</h5>
+                        <p class="fs-5">@Model.Description</p>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="text-muted"><i class="bi bi-award me-2"></i>Créditos</h5>
+                                <p class="fs-5">@Model.Credits</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="text-muted"><i class="bi bi-toggle-on me-2"></i>Estado</h5>
+                                <p class="fs-5">
+                                    @if (Model.IsActive)
+                                    {
+                                        <span class="badge bg-success">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactivo</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Nota:</strong> Al eliminar el curso, se mantendrá el nombre del curso en los registros de estudiantes, pero no estarán vinculados a un curso activo.
+                    </div>
+                    
+                    <form asp-action="Delete" class="mt-4">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-1"></i>Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

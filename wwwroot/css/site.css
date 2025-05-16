@@ -1,0 +1,208 @@
+:root {
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+}
+
+/* Dark mode variables */
+[data-bs-theme=dark] {
+  --primary-color: #3d8bfd;
+  --primary-hover: #5a9cfd;
+  --bs-body-bg: #121212;
+  --bs-body-color: #e0e0e0;
+  --bs-card-bg: #1e1e1e;
+  --bs-border-color: #2c2c2c;
+}
+
+/* Dark mode specific styles */
+[data-bs-theme=dark] .card {
+  background-color: #1e1e1e;
+  border-color: #2c2c2c;
+}
+
+[data-bs-theme=dark] .card-header {
+  background-color: #252525;
+}
+
+[data-bs-theme=dark] .card-footer {
+  background-color: #1a1a1a;
+}
+
+[data-bs-theme=dark] .navbar {
+  background-color: #1a1a1a !important;
+}
+
+[data-bs-theme=dark] .input-group-text {
+  background-color: #252525;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+[data-bs-theme=dark] .form-control {
+  background-color: #252525;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+[data-bs-theme=dark] .form-control:focus {
+  background-color: #2c2c2c;
+  border-color: var(--primary-color);
+}
+
+[data-bs-theme=dark] .list-group-item {
+  background-color: #252525;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+[data-bs-theme=dark] .bg-light {
+  background-color: #1a1a1a !important;
+}
+
+[data-bs-theme=dark] .footer {
+  background-color: #1a1a1a !important;
+  border-color: #2c2c2c;
+}
+
+/* Theme transition */
+html {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+body, .card, .navbar, .footer, .input-group-text, .form-control, .btn {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 40px;
+  background-color: #f5f8fa;
+  padding-bottom: 1rem;
+}
+
+/* Navbar customization */
+.navbar {
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Card customization */
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  font-weight: 600;
+  padding: 1rem;
+}
+
+/* Button customization */
+.btn {
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Form customization */
+.form-control {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+}
+
+/* Footer customization */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 30px;
+  font-size: 0.85rem;
+}
+
+/* Custom page header */
+.display-4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.lead {
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+}
+
+/* List group customization */
+.list-group-item {
+  padding: 0.75rem 1.25rem;
+}
+
+/* Progress bar customization */
+.progress {
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+.progress-bar {
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}

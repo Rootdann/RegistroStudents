@@ -1,0 +1,75 @@
+@model StudentRegistrationSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Crear Estudiante";
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-primary">@ViewData["Title"]</h1>
+            <p class="lead">Completa el formulario para registrar un nuevo estudiante.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Nombre" class="form-label">Nombre Completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input asp-for="Nombre" class="form-control" placeholder="Ingrese el nombre completo" />
+                            </div>
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Edad" class="form-label">Edad</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                <input asp-for="Edad" class="form-control" placeholder="Ingrese la edad" />
+                            </div>
+                            <span asp-validation-for="Edad" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Curso" class="form-label">Curso</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-book"></i></span>
+                                <input asp-for="Curso" class="form-control" placeholder="Ingrese el curso" />
+                            </div>
+                            <span asp-validation-for="Curso" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Promedio" class="form-label">Promedio</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-graph-up"></i></span>
+                                <input asp-for="Promedio" class="form-control" placeholder="Ingrese el promedio" />
+                            </div>
+                            <span asp-validation-for="Promedio" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left me-1"></i>Volver
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-1"></i>Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

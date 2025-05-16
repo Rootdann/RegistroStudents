@@ -1,0 +1,182 @@
+@model IEnumerable<StudentRegistrationSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Estadísticas";
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-primary">@ViewData["Title"]</h1>
+            <p class="lead">Análisis estadístico del rendimiento académico de los estudiantes.</p>
+        </div>
+    </div>
+    
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong>Error:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    <!-- Tarjetas de resumen -->
+    <div class="row mb-5">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-people-fill text-primary fs-1"></i>
+                    </div>
+                    <h3 class="fs-2 fw-bold">@ViewBag.StudentCount</h3>
+                    <p class="text-muted mb-0">Estudiantes Registrados</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-success bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-mortarboard-fill text-success fs-1"></i>
+                    </div>
+                    <h3 class="fs-2 fw-bold">@ViewBag.CourseCount</h3>
+                    <p class="text-muted mb-0">Cursos Activos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-info bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-graph-up text-info fs-1"></i>
+                    </div>
+                    <h3 class="fs-2 fw-bold">@ViewBag.GeneralAverage.ToString("F2")</h3>
+                    <p class="text-muted mb-0">Promedio General</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="rounded-circle bg-warning bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-trophy text-warning fs-1"></i>
+                    </div>
+                    @if (ViewBag.BestStudent != null)
+                    {
+                        <h3 class="fs-2 fw-bold">@ViewBag.BestStudent.Promedio.ToString("F2")</h3>
+                        <p class="text-muted mb-0">Mejor Promedio</p>
+                        <small class="text-muted">@ViewBag.BestStudent.Nombre</small>
+                    }
+                    else
+                    {
+                        <h3 class="fs-2 fw-bold">-</h3>
+                        <p class="text-muted mb-0">Mejor Promedio</p>
+                        <small class="text-muted">No hay datos</small>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráfico de promedios por curso -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0"><i class="bi bi-bar-chart-fill me-2"></i>Promedio por Curso</h5>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.AveragesByCourse != null && ViewBag.AveragesByCourse.Count > 0)
+                    {
+                        <div class="row">
+                            @foreach (var courseAverage in ViewBag.AveragesByCourse)
+                            {
+                                <div class="col-md-6 mb-4">
+                                    <h6>@courseAverage.Key</h6>
+                                    <div class="progress" style="height: 25px;">
+                                        @{
+                                            var percentage = (int)(courseAverage.Value * 10);
+                                            var colorClass = percentage >= 70 ? "bg-success" : 
+                                                            percentage >= 50 ? "bg-warning" : "bg-danger";
+                                        }
+                                        <div class="progress-bar @colorClass" role="progressbar" 
+                                             style="width: @percentage%;" 
+                                             aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100">
+                                            @courseAverage.Value.ToString("F2")
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>No hay datos disponibles para mostrar promedios por curso.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de estudiantes -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0"><i class="bi bi-table me-2"></i>Listado de Estudiantes por Promedio</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Edad</th>
+                                        <th>Curso</th>
+                                        <th>Promedio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var student in Model.OrderByDescending(s => s.Promedio))
+                                    {
+                                        <tr>
+                                            <td>@student.Nombre</td>
+                                            <td>@student.Edad</td>
+                                            <td>@student.Curso</td>
+                                            <td>
+                                                @{
+                                                    var badgeClass = student.Promedio >= 7 ? "bg-success" : 
+                                                                    student.Promedio >= 5 ? "bg-warning" : "bg-danger";
+                                                }
+                                                <span class="badge @badgeClass">@student.Promedio.ToString("F2")</span>
+                                            </td>
+                                            <td>
+                                                <a asp-controller="Students" asp-action="Details" asp-route-id="@student.Id" class="btn btn-sm btn-outline-info">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>No hay estudiantes registrados en el sistema.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

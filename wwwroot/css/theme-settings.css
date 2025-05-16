@@ -1,0 +1,137 @@
+:root {
+    --primary-color: #0d6efd;
+    --primary-color-rgb: 13, 110, 253;
+    --primary-color-hover: #0b5ed7;
+    --primary-color-active: #0a58ca;
+    --primary-color-light: #cfe2ff;
+}
+
+/* Tema claro (predeterminado) */
+[data-bs-theme="light"] {
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --bs-border-color: #dee2e6;
+    --bs-card-bg: #fff;
+    --bs-card-cap-bg: #f8f9fa;
+}
+
+/* Tema oscuro */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #f8f9fa;
+    --bs-border-color: #495057;
+    --bs-card-bg: #343a40;
+    --bs-card-cap-bg: #2c3136;
+}
+
+/* Colores primarios */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover) !important;
+    border-color: var(--primary-color-hover) !important;
+}
+
+.btn-primary:active {
+    background-color: var(--primary-color-active) !important;
+    border-color: var(--primary-color-active) !important;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+/* Colores específicos */
+.color-blue {
+    --primary-color: #0d6efd;
+    --primary-color-rgb: 13, 110, 253;
+    --primary-color-hover: #0b5ed7;
+    --primary-color-active: #0a58ca;
+    --primary-color-light: #cfe2ff;
+}
+
+.color-green {
+    --primary-color: #198754;
+    --primary-color-rgb: 25, 135, 84;
+    --primary-color-hover: #157347;
+    --primary-color-active: #146c43;
+    --primary-color-light: #d1e7dd;
+}
+
+.color-red {
+    --primary-color: #dc3545;
+    --primary-color-rgb: 220, 53, 69;
+    --primary-color-hover: #bb2d3b;
+    --primary-color-active: #b02a37;
+    --primary-color-light: #f8d7da;
+}
+
+.color-orange {
+    --primary-color: #fd7e14;
+    --primary-color-rgb: 253, 126, 20;
+    --primary-color-hover: #d56e0c;
+    --primary-color-active: #c86609;
+    --primary-color-light: #ffe5d0;
+}
+
+.color-purple {
+    --primary-color: #6f42c1;
+    --primary-color-rgb: 111, 66, 193;
+    --primary-color-hover: #5d36a4;
+    --primary-color-active: #563297;
+    --primary-color-light: #e2d9f3;
+}
+
+/* Estilos para la página de configuración */
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-initials {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    box-shadow: 0 0 0 3px white, 0 0 0 6px var(--primary-color);
+}

@@ -1,0 +1,66 @@
+@model StudentRegistrationSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Eliminar Estudiante";
+}
+
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-danger">@ViewData["Title"]</h1>
+            <p class="lead">¿Estás seguro de que deseas eliminar este estudiante?</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="card-title mb-0">@Model.Nombre</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Esta acción no se puede deshacer. Se eliminarán permanentemente todos los datos del estudiante.
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="text-muted"><i class="bi bi-person me-2"></i>Edad</h5>
+                                <p class="fs-5">@Model.Edad años</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="text-muted"><i class="bi bi-book me-2"></i>Curso</h5>
+                                <p class="fs-5">@Model.Curso</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <h5 class="text-muted"><i class="bi bi-graph-up me-2"></i>Promedio</h5>
+                                <p class="fs-5">@Model.Promedio.ToString("F2")</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form asp-action="Delete" class="mt-4">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash me-1"></i>Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

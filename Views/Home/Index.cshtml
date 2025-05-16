@@ -1,0 +1,146 @@
+@{
+    ViewData["Title"] = "Inicio - Dashboard";
+}
+
+<div class="container py-4">
+    <!-- Encabezado del Dashboard -->
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-primary">Dashboard Administrativo</h1>
+            <p class="lead">Bienvenido al Sistema de Registro de Estudiantes</p>
+        </div>
+    </div>
+
+    <!-- Tarjetas de estadísticas -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body d-flex align-items-center">
+                    <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+                        <i class="bi bi-people-fill text-primary fs-1"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-2 fw-bold">6</h3>
+                        <p class="text-muted mb-0">Estudiantes Registrados</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Students" asp-action="Index" class="btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-right me-1"></i> Ver Estudiantes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body d-flex align-items-center">
+                    <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3">
+                        <i class="bi bi-mortarboard-fill text-success fs-1"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-2 fw-bold">4</h3>
+                        <p class="text-muted mb-0">Cursos Activos</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-sm btn-outline-success d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-right me-1"></i> Ver Cursos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body d-flex align-items-center">
+                    <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
+                        <i class="bi bi-graph-up text-info fs-1"></i>
+                    </div>
+                    <div>
+                        <h3 class="fs-2 fw-bold">8.3</h3>
+                        <p class="text-muted mb-0">Promedio General</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-controller="Statistics" asp-action="Index" class="btn btn-sm btn-outline-info d-flex align-items-center justify-content-center">
+                        <i class="bi bi-arrow-right me-1"></i> Ver Estadísticas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fs-4 mb-3">Accesos Rápidos</h2>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-3 mb-4">
+            <a asp-controller="Students" asp-action="Create" class="card h-100 border-0 shadow-sm text-decoration-none text-reset">
+                <div class="card-body text-center py-4">
+                    <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-person-plus-fill text-primary fs-1"></i>
+                    </div>
+                    <h5>Nuevo Estudiante</h5>
+                    <p class="text-muted small mb-0">Registrar un nuevo estudiante en el sistema</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <a asp-controller="Students" asp-action="Index" class="card h-100 border-0 shadow-sm text-decoration-none text-reset">
+                <div class="card-body text-center py-4">
+                    <div class="rounded-circle bg-success bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-list-check text-success fs-1"></i>
+                    </div>
+                    <h5>Listar Estudiantes</h5>
+                    <p class="text-muted small mb-0">Ver todos los estudiantes registrados</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <a asp-controller="Search" asp-action="Index" class="card h-100 border-0 shadow-sm text-decoration-none text-reset">
+                <div class="card-body text-center py-4">
+                    <div class="rounded-circle bg-warning bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-search text-warning fs-1"></i>
+                    </div>
+                    <h5>Buscar</h5>
+                    <p class="text-muted small mb-0">Buscar estudiantes por nombre o curso</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <a asp-controller="Settings" asp-action="Index" class="card h-100 border-0 shadow-sm text-decoration-none text-reset">
+                <div class="card-body text-center py-4">
+                    <div class="rounded-circle bg-danger bg-opacity-10 p-3 d-inline-block mb-3">
+                        <i class="bi bi-gear-fill text-danger fs-1"></i>
+                    </div>
+                    <h5>Configuración</h5>
+                    <p class="text-muted small mb-0">Ajustes y preferencias del sistema</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Información del usuario -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-light py-3">
+                    <h5 class="mb-0">Información de Sesión</h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-1"><strong>Usuario:</strong> @User.Identity.Name</p>
+                    <p class="mb-1"><strong>Rol:</strong> @(User.IsInRole("Admin") ? "Administrador" : "Usuario")</p>
+                    <p class="mb-0"><strong>Fecha:</strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
